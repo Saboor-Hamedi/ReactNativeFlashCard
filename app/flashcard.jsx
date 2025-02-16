@@ -50,7 +50,7 @@ const Flashcard = ({ question, answer }) => {
 
   return (
     <TouchableOpacity onPress={flipCard}>
-      <View style={styles.container}>
+      <View style={styles.cardContainer}>
         <Animated.View
           style={[styles.card, frontAnimatedStyle, styles.cardFront]}
         >
@@ -69,20 +69,22 @@ const Flashcard = ({ question, answer }) => {
 export default Flashcard;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
+  cardContainer: {
     justifyContent: "center",
-    backgroundColor: "black",
+    alignItems: "center",
+    width: 300,
+    height: 200,
+    marginBottom: 20,
   },
   card: {
     width: 300,
     height: 200,
     backgroundColor: "#3498db",
     borderRadius: 10,
+    justifyContent: "center",
     alignItems: "center",
     shadowColor: "#000",
-    // shadowOffset: { width: 2, height: 2 },
+    shadowOffset: { width: 2, height: 2 },
     shadowOpacity: 0.3,
     shadowRadius: 4,
     elevation: 5,

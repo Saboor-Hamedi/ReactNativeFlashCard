@@ -2,31 +2,44 @@ import React from "react";
 import { View, StyleSheet, ImageBackground } from "react-native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import Flashcard from "./flashcard";
-
-// import image
-import coffeeImage from "../assets/images/coffee.png";
+import Profile from "./profile";
 import { Link } from "expo-router";
+
+import coffeeImage from "../assets/images/coffee.png";
 
 const Drawer = createDrawerNavigator();
 
 const HomeScreen = () => {
   return (
     <View style={styles.container}>
-      <ImageBackground
+      {/* <ImageBackground
         source={coffeeImage}
         resizeMode="cover"
         style={styles.image}
       >
-        <Flashcard question={"Question"} answer={"Answer"} />
-      </ImageBackground>
+      </ImageBackground> */}
+      <Flashcard question={"Question"} answer={"Answer"} />
     </View>
   );
 };
 
 const App = () => {
   return (
-    <Drawer.Navigator initialRouteName="Profile">
-      <Drawer.Screen name="Profile" component={HomeScreen} />
+    <Drawer.Navigator>
+      <Drawer.Screen
+        name="home"
+        component={HomeScreen}
+        options={{
+          headerTitle: "",
+        }}
+      />
+      <Drawer.Screen
+        name="Profile"
+        component={Profile}
+        options={{
+          headerTitle: "",
+        }}
+      />
     </Drawer.Navigator>
   );
 };
