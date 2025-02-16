@@ -1,10 +1,15 @@
 import React from "react";
-import { View, Text, StyleSheet, ImageBackground } from "react-native";
+import { View, StyleSheet, ImageBackground } from "react-native";
+import { createDrawerNavigator } from "@react-navigation/drawer";
+import Flashcard from "./flashcard";
 
 // import image
-import coffeeImage from "../../assets/images/coffee.png";
+import coffeeImage from "../assets/images/coffee.png";
+import { Link } from "expo-router";
 
-const app = () => {
+const Drawer = createDrawerNavigator();
+
+const HomeScreen = () => {
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -12,13 +17,21 @@ const app = () => {
         resizeMode="cover"
         style={styles.image}
       >
-        <Text style={styles.text}>Hello World</Text>
+        <Flashcard question={"Question"} answer={"Answer"} />
       </ImageBackground>
     </View>
   );
 };
 
-export default app;
+const App = () => {
+  return (
+    <Drawer.Navigator initialRouteName="Profile">
+      <Drawer.Screen name="Profile" component={HomeScreen} />
+    </Drawer.Navigator>
+  );
+};
+
+export default App;
 
 const styles = StyleSheet.create({
   container: {
@@ -42,5 +55,10 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 10,
     width: "100%",
+  },
+  link: {
+    fontSize: 20,
+    color: "rgba(255, 223, 18, 0.91)",
+    fontWeight: "bold",
   },
 });
